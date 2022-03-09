@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.CharacterSheet">
    <children>
       <GridPane>
@@ -53,7 +52,6 @@
                         <TextField promptText="Background" GridPane.columnIndex="1" />
                         <ComboBox prefWidth="150.0" promptText="Race" GridPane.rowIndex="2" />
                         <TextField promptText="Player Name" GridPane.columnIndex="2" />
-                        <ColorPicker promptText="Alignment" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField promptText="Experience Points" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Label text="Class &amp; Level" GridPane.rowIndex="1" />
                         <Label text="Background" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -61,10 +59,22 @@
                         <Label text="Race" GridPane.rowIndex="3" />
                         <Label text="Alignment" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Experience Points" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ChoiceBox id="alignment-choicebox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
             </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Strength" />
+                        <TextField alignment="CENTER" text="10" />
+                        <TextField alignment="CENTER" text="0" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </children>
