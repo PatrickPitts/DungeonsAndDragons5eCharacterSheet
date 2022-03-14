@@ -53,6 +53,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20211205</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -76,7 +83,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.nerdcore.dungeonsanddragons5echaractersheet/org.nerdcore.dungeonsanddragons5echaractersheet.HelloApplication
+                                org.nerdcore.dungeonsanddragons5echaractersheet/org.nerdcore.dungeonsanddragons5echaractersheet.CharacterSheetApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

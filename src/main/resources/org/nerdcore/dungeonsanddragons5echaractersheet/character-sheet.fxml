@@ -4,10 +4,13 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,27 +19,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="2000.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.CharacterSheet">
-   <children>
-      <GridPane layoutX="24.0" layoutY="3.0" prefHeight="1143.0" prefWidth="802.0">
+<ScrollPane pannable="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.BaseCharacterSheetController">
+   <content>
+      <GridPane maxWidth="1.7976931348623157E308" prefHeight="1400.0" prefWidth="1200.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="662.0" minWidth="10.0" prefWidth="107.33332824707031" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="221.6666717529297" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="308.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="0.0" prefWidth="165.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="662.0" minWidth="10.0" prefWidth="121.19998168945312" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="287.0000244140625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="309.60002441406255" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="0.0" prefWidth="451.9999755859376" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="427.33331298828125" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="373.66668701171875" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="251.6666259765625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="86.4" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="638.4" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="203.2000366210939" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="446.39996337890625" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <HBox id="Ident HBox" prefHeight="100.0" prefWidth="800.0" GridPane.columnSpan="2147483647">
+            <MenuBar GridPane.columnSpan="2147483647">
+              <menus>
+                <Menu id="File" mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem id="Save" mnemonicParsing="false" onAction="#onSave" text="Save" />
+                  </items>
+                </Menu>
+                <Menu id="Edit" mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu id="Help" mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox id="Ident HBox" prefHeight="100.0" prefWidth="800.0" spacing="25.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
                <children>
                   <VBox prefHeight="100.0" prefWidth="287.0">
                      <children>
-                        <TextField prefHeight="38.0" prefWidth="156.0" promptText="Character Name">
+                        <TextField id="characterNameTextField" fx:id="characterNameTextField" prefHeight="38.0" prefWidth="156.0" promptText="Character Name">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -47,7 +70,7 @@
                         <Label text="CharacterName" />
                      </children>
                   </VBox>
-                  <GridPane prefHeight="100.0" prefWidth="642.0">
+                  <GridPane prefHeight="86.0" prefWidth="916.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,28 +83,31 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField promptText="Class &amp; Level" />
-                        <TextField promptText="Background" GridPane.columnIndex="1" />
-                        <ComboBox prefWidth="150.0" promptText="Race" GridPane.rowIndex="2" />
-                        <TextField promptText="Player Name" GridPane.columnIndex="2" />
-                        <TextField promptText="Experience Points" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="classLevelTextArea" promptText="Class &amp; Level" />
+                        <TextField fx:id="backgroundTextField" promptText="Background" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="raceComboBox" prefWidth="150.0" promptText="Race" GridPane.rowIndex="2" />
+                        <TextField fx:id="playerNameTextField" promptText="Player Name" GridPane.columnIndex="2" />
+                        <TextField fx:id="expTextField" promptText="Experience Points" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Label text="Class &amp; Level" GridPane.rowIndex="1" />
                         <Label text="Background" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Player Name" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label text="Race" GridPane.rowIndex="3" />
                         <Label text="Alignment" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Experience Points" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <ChoiceBox id="alignment-choicebox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ChoiceBox id="alignment-choicebox" fx:id="alignmentChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
             </HBox>
-            <VBox id="Core Stats VBox" alignment="CENTER" prefHeight="834.0" prefWidth="126.0" style="-fx-background-color: lightgrey; -fx-padding: 15px; -fx-spacing: 15px;" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <VBox id="Core Stats VBox" alignment="CENTER" prefHeight="834.0" prefWidth="126.0" style="-fx-background-color: lightgrey; -fx-padding: 15px; -fx-spacing: 15px;" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <children>
                   <VBox id="STR" alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="100.0" prefWidth="96.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Strength" />
-                        <TextField alignment="CENTER" maxWidth="66.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="strengthTextField" alignment="CENTER" maxWidth="66.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -89,13 +115,13 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" text="0" />
+                        <TextField fx:id="strengthBonusTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                   <VBox id="DEX" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="96.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Dexterity" />
-                        <TextField alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="dexterityTextField" alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -103,13 +129,13 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="25.0" text="0" />
+                        <TextField fx:id="dexterityBonusTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                   <VBox id="CON" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Constitution" />
-                        <TextField alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="constitutionTextField" alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -117,13 +143,13 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="25.0" text="0" />
+                        <TextField fx:id="constitutionBonusTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                   <VBox id="INT" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Intelligence" />
-                        <TextField alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="intelligenceTextField" alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -131,13 +157,13 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="25.0" text="0" />
+                        <TextField fx:id="intelligenceBonusTextArea" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                   <VBox id="WIS" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Wisdom" />
-                        <TextField alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="wisdomTextField" alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -145,13 +171,13 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="25.0" text="0" />
+                        <TextField fx:id="wisdomBonusTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                   <VBox id="CHA" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <Label text="Charisma" />
-                        <TextField alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
+                        <TextField fx:id="charismaTextField" alignment="CENTER" maxWidth="35.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="59.0" style="-fx-background-color: -fx0control-inner-background;" text="10">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -159,22 +185,22 @@
                               <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                            </padding>
                         </TextField>
-                        <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="25.0" text="0" />
+                        <TextField fx:id="charismaBonusTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="35.0" text="0" />
                      </children>
                   </VBox>
                </children>
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
                <opaqueInsets>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </opaqueInsets>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
             </VBox>
-            <VBox id="2nd Col VBox" prefHeight="465.0" prefWidth="225.0" style="-fx-spacing: 5px; -fx-padding: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <VBox id="2nd Col VBox" prefHeight="465.0" prefWidth="225.0" style="-fx-spacing: 5px; -fx-padding: 5;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <children>
                   <HBox id="Inspiratoin" alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="229.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px; -fx-spacing: 15px;">
                      <children>
-                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="38.0" text="0" />
+                        <TextField fx:id="inspirationTextField" alignment="CENTER" prefHeight="26.0" prefWidth="38.0" text="0" />
                         <Label text="Inspiration">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -187,7 +213,7 @@
                   </HBox>
                   <HBox id="Proficiency" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="229.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-spacing: 15px; -fx-padding: 5px;">
                      <children>
-                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="39.0" text="0" />
+                        <TextField fx:id="proficiencyBonusTextField" alignment="CENTER" prefHeight="26.0" prefWidth="39.0" text="0" />
                         <Label text="Proficiency Bonus">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -195,47 +221,47 @@
                         </Label>
                      </children>
                   </HBox>
-                  <VBox id="Saving Throws" alignment="CENTER" prefHeight="64.0" prefWidth="212.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-spacing: 0; -fx-padding: 0;">
+                  <VBox id="Saving Throws" alignment="CENTER" prefHeight="64.0" prefWidth="212.0" style="-fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="strengthSaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="strengthSaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Strength" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="dexteritySaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="dexteritySaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Dexterity" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="constitutionSaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="constiutionSaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Constitution" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="intelligenceSaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="intelligenceSaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Intelligence" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="wisdomSaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="wisdomSaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Wisdom" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="charismaSaveProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="charismaSaveBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Charisma" />
                            </children>
                         </HBox>
@@ -246,131 +272,131 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox id="Skills" alignment="CENTER" prefHeight="512.0" prefWidth="212.0" style="-fx-border-color: black; -fx-border-width: 2px;">
+                  <VBox id="Skills" alignment="CENTER" prefHeight="552.0" prefWidth="216.0" style="-fx-border-color: black; -fx-border-width: 2px;">
                      <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="acrobaticsSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="acrobaticsSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Acrobatics (Dex)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="animalHandlingSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="animalHandlingSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Animal Handling (Wis)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="arcanaSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="arcanaSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Arcana (Int)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="athleticsSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="athleticsSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Athletics (Str)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="deceptionSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="deceptionSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Deception (Cha)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="historySkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="historySkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="History (Int)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="12.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="insightSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="insightSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Insight (Wis)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="48.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="intimidationSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="intimidationSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Intimidation (Cha)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="83.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="investigationSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="investigationSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Investigation (Int)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="118.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="medicineSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="medicineSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Medicine (Wis)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="153.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="natureSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="natureSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Nature (Int)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="188.0" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="perceptionSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="perceptionSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Perception (Wis)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="performanceSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="performanceSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Performance (Cha)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="persuasionSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="persuasionSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Persuasion (Cha)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="religionSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="religionSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Religion (Int)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="sleightOfHandSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="sleightOfHandSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Sleight of Hand (Dex)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="stealthSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="stealthSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Stealth (Dex)" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="214.0" style="-fx-padding: 0 5 0 5; -fx-spacing: 15px;">
                            <children>
-                              <RadioButton mnemonicParsing="false" />
-                              <TextField prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                              <RadioButton fx:id="survivalSkillProficiencyRadioButton" mnemonicParsing="false" />
+                              <TextField fx:id="survivalSkillBonusTextField" prefHeight="26.0" prefWidth="31.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
                               <Label alignment="CENTER" text="Survival (Wis)" />
                            </children>
                         </HBox>
@@ -382,14 +408,17 @@
                      </children>
                   </VBox>
                </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
             </VBox>
-            <VBox id="Core Combat" prefHeight="862.0" prefWidth="320.0" style="-fx-spacing: 10px;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <VBox id="Core Combat" prefHeight="862.0" prefWidth="320.0" style="-fx-spacing: 10px;" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                <children>
                   <HBox id="Quick Numbers" prefHeight="100.0" prefWidth="200.0" style="-fx-spacing: 15px;">
                      <children>
                         <VBox id="AC" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <TextField alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
+                              <TextField fx:id="armorClassTextField" alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -399,7 +428,7 @@
                         </VBox>
                         <VBox id="Initiative" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <TextField alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
+                              <TextField fx:id="initiativeTextField" alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -409,7 +438,7 @@
                         </VBox>
                         <VBox id="Speed" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <TextField alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
+                              <TextField fx:id="speedTextField" alignment="CENTER" prefHeight="76.0" prefWidth="100.0" text="10">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -422,8 +451,8 @@
                   <FlowPane id="Current HP" prefHeight="112.0" prefWidth="287.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 10 10 0 0; -fx-padding: 5px;">
                      <children>
                         <Label text="Hit Point Maximum" />
-                        <TextField prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
-                        <TextArea prefHeight="87.0" prefWidth="283.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
+                        <TextField fx:id="hpMaximumTextField" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 0 0 2 0;" />
+                        <TextArea fx:id="hpCurrentTextArea" prefHeight="87.0" prefWidth="283.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="284.0" text="Current Hit Points">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -433,7 +462,7 @@
                   </FlowPane>
                   <VBox id="Temp Hit Points" alignment="CENTER" prefHeight="150.0" prefWidth="298.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 0 0 10 10;">
                      <children>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
+                        <TextArea fx:id="hpTemporaryTextArea" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
                         <Label text="Temporary Hit Points">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -446,8 +475,8 @@
                         <FlowPane prefHeight="107.0" prefWidth="137.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;">
                            <children>
                               <Label text="Total" />
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="99.0" style="-fx-border-color: lightgrey; -fx-border-width: 0 0 2 0; -fx-background-color: -fx0control-inner-background;" text="4d8 + 9d12" />
-                              <TextArea prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
+                              <TextField fx:id="totalHitDiceTextField" alignment="CENTER" prefHeight="25.0" prefWidth="99.0" style="-fx-border-color: lightgrey; -fx-border-width: 0 0 2 0; -fx-background-color: -fx0control-inner-background;" text="4d8 + 9d12" />
+                              <TextArea fx:id="hitDiceTextArea" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: -fx0control-inner-background; -fx-border-color: lightgrey; -fx-border-width: 2px;" />
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="131.0" text="Hit Dice">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -475,17 +504,17 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="1" />
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="2" />
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" />
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <RadioButton fx:id="deathSaveSuccess1RadioButton" mnemonicParsing="false" GridPane.columnIndex="1" />
+                              <RadioButton fx:id="deathSaveSuccess2RadioButton" mnemonicParsing="false" GridPane.columnIndex="2" />
+                              <RadioButton fx:id="deathSaveSuccess3RadioButton" mnemonicParsing="false" GridPane.columnIndex="3" />
+                              <RadioButton fx:id="deathSaveFailure1RadioButton" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <RadioButton fx:id="deathSaveFailure2RadioButton" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <RadioButton fx:id="deathSaveFailure3RadioButton" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
                   </HBox>
-                  <GridPane hgap="4.0" prefHeight="250.0" prefWidth="298.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 2px;" vgap="4.0">
+                  <GridPane hgap="4.0" prefHeight="302.0" prefWidth="298.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 2px;" vgap="4.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="114.33334350585938" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="46.666656494140625" />
@@ -515,16 +544,16 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="1" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField layoutX="10.0" layoutY="42.0" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="2" />
-                        <TextField layoutX="109.0" layoutY="42.0" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="3" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <TextArea prefHeight="359.0" prefWidth="290.0" text="kAJSHDFHHSADF&#10;ASDF&#10;A&#10;SDF&#10;ASD&#10;F&#10;ASD&#10;FA&#10;SD&#10;F&#10;ASD&#10;FA&#10;SD&#10;F&#10;AS&#10;DF&#10;AS&#10;DF&#10;AS&#10;DF&#10;A&#10;SDF&#10;A&#10;SD&#10;F&#10;FAS" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
+                        <TextField fx:id="attack1NameTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="1" />
+                        <TextField fx:id="attack1AtkBonusTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="attack2NameTextField" layoutX="10.0" layoutY="42.0" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="2" />
+                        <TextField fx:id="attack2AtkBonusTextField" layoutX="109.0" layoutY="42.0" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="attack1DamageTypeTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="attack2DamageTypeTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="attack3NameTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="3" />
+                        <TextField fx:id="attack3AtkBonusTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="attack3DamageTypeTextField" style="-fx-background-color: lightgrey; -fx-border-color: lightgrey;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextArea fx:id="attacksAndSpellcastingTextArea" prefHeight="359.0" prefWidth="290.0" text="kAJSHDFHHSADF&#10;ASDF&#10;A&#10;SDF&#10;ASD&#10;F&#10;ASD&#10;FA&#10;SD&#10;F&#10;ASD&#10;FA&#10;SD&#10;F&#10;AS&#10;DF&#10;AS&#10;DF&#10;AS&#10;DF&#10;A&#10;SDF&#10;A&#10;SD&#10;F&#10;FAS" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="113.0" prefWidth="290.0" text="Attacks &amp; Spellcasting" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -533,11 +562,176 @@
                      </children>
                   </GridPane>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox id="Personality" prefHeight="200.0" prefWidth="100.0" spacing="15.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <children>
+                  <VBox id="Personality Traits" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 10 10 0 0;">
+                     <children>
+                        <TextArea fx:id="personalityTextArea" prefHeight="200.0" prefWidth="200.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextArea>
+                        <Label text="Personality Traits">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox id="Ideals" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 2px;">
+                     <children>
+                        <TextArea fx:id="idealsTextArea" prefHeight="200.0" prefWidth="200.0" />
+                        <Label text="Ideals">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox id="Bonds" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 2px;">
+                     <children>
+                        <TextArea fx:id="bondsTextArea" prefHeight="200.0" prefWidth="200.0" />
+                        <Label text="Bonds">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox id="Flaws" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 0 0 10 10;">
+                     <children>
+                        <TextArea fx:id="flawsTextArea" prefHeight="200.0" prefWidth="200.0" />
+                        <Label text="Flaws">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 2px;" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2">
+               <children>
+                  <TextArea fx:id="featuresTextArea" prefHeight="593.0" prefWidth="425.0" />
+                  <Label text="Features &amp; Traits">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </VBox>
+            <FlowPane style="-fx-border-color: black; -fx-border-width: 2px;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+               <children>
+                  <VBox>
+                     <children>
+                        <VBox fillWidth="false" prefHeight="152.0" prefWidth="75.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="75.0" spacing="3.0" style="-fx-border-color: black; -fx-border-width: 0 2 2 0;">
+                                 <children>
+                                    <Label id="CP" text="CP" />
+                                    <TextField fx:id="cpTextField" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="75.0" spacing="3.0" style="-fx-border-color: black; -fx-border-width: 0 2 2 0;">
+                                 <children>
+                                    <Label id="CP" text="SP" />
+                                    <TextField fx:id="spTextField" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="75.0" spacing="3.0" style="-fx-border-color: black; -fx-border-width: 0 2 2 0;">
+                                 <children>
+                                    <Label id="CP" text="EP" />
+                                    <TextField fx:id="epTextField" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="75.0" spacing="3.0" style="-fx-border-color: black; -fx-border-width: 0 2 2 0;">
+                                 <children>
+                                    <Label id="CP" text="GP" />
+                                    <TextField fx:id="gpTextField" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="71.0" prefHeight="30.0" prefWidth="75.0" spacing="3.0" style="-fx-border-color: black; -fx-border-width: 0 2 2 0;">
+                                 <children>
+                                    <Label id="CP" text="PP" />
+                                    <TextField fx:id="ppTextField" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <TextArea fx:id="equipmentTextArea" prefHeight="402.0" prefWidth="210.0" wrapText="true" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="285.0" text="Equipment">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="358.0" spacing="45.0" style="-fx-border-color: black; -fx-border-width: 2px;">
+                     <children>
+                        <TextField fx:id="passiveWisdomTextField" alignment="CENTER" prefHeight="26.0" prefWidth="33.0" text="0" />
+                        <Label text="Passive Wisdom (Perception)" />
+                     </children>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="389.0" prefWidth="358.0" style="-fx-border-color: black; -fx-border-width: 2px;">
+                     <children>
+                        <TextArea fx:id="profAndLanguagesTextArea" prefHeight="569.0" prefWidth="280.0" />
+                        <Label text="Other Proficiencies &amp; Languages">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
             </VBox>
          </children>
       </GridPane>
-   </children>
-</AnchorPane>
+   </content>
+</ScrollPane>
