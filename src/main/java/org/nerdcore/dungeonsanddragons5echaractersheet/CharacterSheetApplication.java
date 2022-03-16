@@ -15,9 +15,11 @@ public class CharacterSheetApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CharacterSheetApplication.class.getResource("character-sheet.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Screen.getPrimary().getBounds().getWidth()-75 , Screen.getPrimary().getBounds().getHeight()-75);
+//        Scene scene = new Scene(fxmlLoader.load(), Screen.getPrimary().getBounds().getWidth()-75 , Screen.getPrimary().getBounds().getHeight()-75);
+        Scene scene = new Scene(fxmlLoader.load());
 
         stage.setTitle("Hello!");
+        stage.setHeight(Screen.getPrimary().getBounds().getHeight()-75);
         stage.setScene(scene);
 
         stage.show();
