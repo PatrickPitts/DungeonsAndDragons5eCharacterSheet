@@ -337,11 +337,9 @@ public class BaseCharacterSheetController implements Initializable {
 
     @FXML
     protected void onLoad(JSONObject characterSheetObject){
-//        JSONObject characterSheetObject = IOServices.getJSONObjectFromFile(characterNameTextField);
         int numVal = 0;
         JSONObject j;
 
-        //System.out.println(characterSheetObject.toString(4));
         JSONObject savingThrowsObject = characterSheetObject.getJSONObject("Saving Throws");
         strengthSaveBonusTextField.setText(
                 String.valueOf(savingThrowsObject.getJSONObject("Strength").getString("Bonus"))
@@ -544,7 +542,6 @@ public class BaseCharacterSheetController implements Initializable {
 
     @FXML
     protected void onSave(JSONObject characterSheetObject) {
-//        JSONObject characterSheetObject = new JSONObject();//main stored object
         JSONObject j = new JSONObject();//temporary storage object
 
         JSONObject identityObject = new JSONObject();

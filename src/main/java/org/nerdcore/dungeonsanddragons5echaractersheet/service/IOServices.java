@@ -12,11 +12,22 @@ public class IOServices {
 
     private static FileChooser fileChooser;
     private static File savedSheetsDirectory;
+    private static final String sheetFilePath = "/Documents/CharacterSheetManager/.characterSheets";
+    private static final String sysFilePath = "/Document/CharacterSheetManager/.sys";
 
     public static void verifyDirectoryPath(){
-        File documentsFile = new File(System.getProperty("user.home"), "/Documents/.characterSheets");
+        File documentsFile = new File(System.getProperty("user.home"), sheetFilePath);
         if(documentsFile.exists() || documentsFile.mkdir()){
             savedSheetsDirectory = documentsFile;
+        } else {
+            savedSheetsDirectory = new File(System.getProperty("user.home"));
+        }
+    }
+
+    public static void verifySystemStoreDirectoryPath(){
+        File staticStoreDirectoryPath = new File(System.getProperty("user.home"), sysFilePath);
+        if(staticStoreDirectoryPath.exists() || staticStoreDirectoryPath.mkdir()){
+            savedSheetsDirectory = staticStoreDirectoryPath;
         } else {
             savedSheetsDirectory = new File(System.getProperty("user.home"));
         }
@@ -48,7 +59,7 @@ public class IOServices {
         fileChooser.getExtensionFilters().add(new ExtensionFilter("Character Sheet File", "*.json"));
         fileChooser.setInitialDirectory(savedSheetsDirectory);
         File selectedFile = fileChooser.showOpenDialog(node.getScene().getWindow());
-        //TODO: File Verification
+        //TODO: JSON File Verification
         try{
             JSONTokener tokener = new JSONTokener(new FileInputStream(selectedFile));
             return new JSONObject(tokener);
