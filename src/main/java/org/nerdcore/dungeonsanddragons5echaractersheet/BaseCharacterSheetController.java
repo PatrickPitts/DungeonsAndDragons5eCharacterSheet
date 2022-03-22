@@ -336,8 +336,8 @@ public class BaseCharacterSheetController implements Initializable {
     private MenuBar primaryMenuBar;
 
     @FXML
-    protected void onLoad(){
-        JSONObject characterSheetObject = IOServices.getJSONObjectFromFile(primaryMenuBar);
+    protected void onLoad(JSONObject characterSheetObject){
+//        JSONObject characterSheetObject = IOServices.getJSONObjectFromFile(characterNameTextField);
         int numVal = 0;
         JSONObject j;
 
@@ -543,8 +543,8 @@ public class BaseCharacterSheetController implements Initializable {
     }
 
     @FXML
-    protected void onSave() {
-        JSONObject characterSheetObject = new JSONObject();//main stored object
+    protected void onSave(JSONObject characterSheetObject) {
+//        JSONObject characterSheetObject = new JSONObject();//main stored object
         JSONObject j = new JSONObject();//temporary storage object
 
         JSONObject identityObject = new JSONObject();
@@ -767,7 +767,7 @@ public class BaseCharacterSheetController implements Initializable {
 
         //characterSheetObject.put("Passive Perception", pas)
 
-        IOServices.writeBaseCharacterJSONObjectToFile(characterSheetObject, primaryMenuBar);
+//        IOServices.writeBaseCharacterJSONObjectToFile(characterSheetObject, primaryMenuBar);
     }
 
     @Override
@@ -792,6 +792,11 @@ public class BaseCharacterSheetController implements Initializable {
 
 
 
+    }
+
+    @FXML
+    protected void alert(){
+        System.out.println("Greetings from the base character sheet controller!");
     }
 
 
