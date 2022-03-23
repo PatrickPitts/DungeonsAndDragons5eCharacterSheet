@@ -3,6 +3,7 @@ package org.nerdcore.dungeonsanddragons5echaractersheet.service;
 import javafx.scene.Node;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -12,8 +13,26 @@ public class IOServices {
 
     private static FileChooser fileChooser;
     private static File savedSheetsDirectory;
+    private static File sysDirectory;
     private static final String sheetFilePath = "/Documents/CharacterSheetManager/.characterSheets";
-    private static final String sysFilePath = "/Document/CharacterSheetManager/.sys";
+    private static final String sysFilePath = "/Documents/CharacterSheetManager/.sys";
+
+    public static JSONArray getAllSpellsJSONArray(){
+        verifySystemStoreDirectoryPath();
+//        String datapath = sysFilePath + "/allspells.json";
+//        String datapath = "C:/Users/spugn/Documents/CharacterSheetManager/.sys/allspells.json";
+        File spellJSONFile = new File(System.getProperty("user.home"), sysFilePath + "/allspells.json");
+
+        if(spellJSONFile.exists()){
+            try (FileInputStream fis = new FileInputStream(spellJSONFile)){
+                JSONTokener t = new JSONTokener(fis);
+                return new JSONArray(t);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
     public static void verifyDirectoryPath(){
         File documentsFile = new File(System.getProperty("user.home"), sheetFilePath);
@@ -22,15 +41,17 @@ public class IOServices {
         } else {
             savedSheetsDirectory = new File(System.getProperty("user.home"));
         }
+
     }
 
     public static void verifySystemStoreDirectoryPath(){
         File staticStoreDirectoryPath = new File(System.getProperty("user.home"), sysFilePath);
         if(staticStoreDirectoryPath.exists() || staticStoreDirectoryPath.mkdir()){
-            savedSheetsDirectory = staticStoreDirectoryPath;
+            sysDirectory = staticStoreDirectoryPath;
         } else {
-            savedSheetsDirectory = new File(System.getProperty("user.home"));
+            sysDirectory = new File(System.getProperty("user.home"));
         }
+
     }
 
     public static void writeBaseCharacterJSONObjectToFile(JSONObject obj, Node node) {
@@ -52,7 +73,7 @@ public class IOServices {
 
     }
 
-    public static JSONObject getJSONObjectFromFile(Node node){
+    public static JSONObject getCharacterJSONObjectFromFile(Node node){
         verifyDirectoryPath();
         fileChooser = new FileChooser();
         fileChooser.setTitle("Load Character from .json");
@@ -60,10 +81,10 @@ public class IOServices {
         fileChooser.setInitialDirectory(savedSheetsDirectory);
         File selectedFile = fileChooser.showOpenDialog(node.getScene().getWindow());
         //TODO: JSON File Verification
-        try{
-            JSONTokener tokener = new JSONTokener(new FileInputStream(selectedFile));
+        try(FileInputStream fis = new FileInputStream(selectedFile)){
+            JSONTokener tokener = new JSONTokener(fis);
             return new JSONObject(tokener);
-        } catch (Exception e){
+        } catch (IOException e){
             e.printStackTrace();
         }
 

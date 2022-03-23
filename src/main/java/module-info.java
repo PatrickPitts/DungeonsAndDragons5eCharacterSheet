@@ -6,6 +6,7 @@ module org.nerdcore.dungeonsanddragons5echaractersheet {
     requires org.kordamp.ikonli.javafx;
     requires org.json;
     requires java.sql;
+    requires javafx.web;
 
     opens org.nerdcore.dungeonsanddragons5echaractersheet to javafx.fxml;
     exports org.nerdcore.dungeonsanddragons5echaractersheet;
