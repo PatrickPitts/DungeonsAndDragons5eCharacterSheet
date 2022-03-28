@@ -46,6 +46,22 @@ public class SpellsSheetController implements Initializable {
     public ListView ninthLevelListView;
     @FXML
     public WebView spellDescriptionWebView;
+    @FXML
+    public Label spellNameLabel;
+    @FXML
+    public Label spellLevelSchoolLabel;
+    @FXML
+    public Label spellCastingTimeLabel;
+    @FXML
+    public Label spellRangeLabel;
+    @FXML
+    public Label spellTargetLabel;
+    @FXML
+    public Label spellComponentsLabel;
+    @FXML
+    public Label spellDurationLabel;
+    @FXML
+    public Label spellClassesLabel;
 
     protected void setSpellDescriptionText(String spellName){
         spellDescriptionWebView.getEngine().loadContent("");
@@ -53,6 +69,8 @@ public class SpellsSheetController implements Initializable {
             JSONObject j = (JSONObject) obj;
             if(j.get("spellName").equals(spellName)){
                 spellDescriptionWebView.getEngine().loadContent(j.getString("description"));
+
+
                 break;
             }
         }
