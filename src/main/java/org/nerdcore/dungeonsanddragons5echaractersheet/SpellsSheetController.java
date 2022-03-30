@@ -14,10 +14,12 @@ import javafx.scene.web.WebView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nerdcore.dungeonsanddragons5echaractersheet.service.IOServices;
+import org.nerdcore.dungeonsanddragons5echaractersheet.service.StringProcessingService;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SpellsSheetController implements Initializable {
@@ -62,6 +64,8 @@ public class SpellsSheetController implements Initializable {
     public Label spellDurationLabel;
     @FXML
     public Label spellClassesLabel;
+    @FXML
+    public Label spellSourceBookLabel;
 
     protected void setSpellDescriptionText(String spellName){
         spellDescriptionWebView.getEngine().loadContent("");
@@ -69,8 +73,33 @@ public class SpellsSheetController implements Initializable {
             JSONObject j = (JSONObject) obj;
             if(j.get("spellName").equals(spellName)){
                 spellDescriptionWebView.getEngine().loadContent(j.getString("description"));
-
-
+                spellNameLabel.setText(j.getString("spellName"));
+                List<String> components = new ArrayList<>();
+                if(j.getBoolean("verbalComponent")){
+                    components.add("V");
+                }
+                if(j.getBoolean("somaticComponent")){
+                    components.add("S");
+                }
+                String materials = j.getString("materialComponents");
+                if(!materials.equals("None")){
+                    components.add(String.format("M (%s)", materials));
+                }
+                spellComponentsLabel.setText(String.join(", ", components));
+                spellRangeLabel.setText(j.getString("range"));
+                spellDurationLabel.setText(j.getString("duration"));
+                spellCastingTimeLabel.setText(j.getString("castingTime"));
+                int spellLevel = j.getInt("spellLevel");
+                String spellSchool = j.getString("school");
+                String spellLevelSchoolText;
+                if(spellLevel == 0){
+                    spellLevelSchoolText = String.format("%s cantrip", spellSchool);
+                    spellLevelSchoolText = spellLevelSchoolText.substring(0, 1).toUpperCase() + spellLevelSchoolText.substring(1).toLowerCase();
+                } else {
+                    spellLevelSchoolText=String.format("%s-level %s", StringProcessingService.getOrdinal(spellLevel), spellSchool);
+                }
+                spellLevelSchoolLabel.setText(spellLevelSchoolText);
+                spellSourceBookLabel.setText(j.getString("source"));
                 break;
             }
         }

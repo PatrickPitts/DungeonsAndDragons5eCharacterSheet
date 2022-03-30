@@ -1,0 +1,42 @@
+{
+  "Barbarian": {
+    "Hit Dice": "d12",
+    "_all": {
+      "Saving Throws": [
+        "Strength",
+        "Constitution"
+      ],
+      "Proficiencies": [
+        "Light Armor",
+        "Medium Armor",
+        "Shields",
+        "Simple Weapons",
+        "Martial Weapons"
+      ]
+    },
+    "_choice": {
+      "Skills": {
+        "num": 2,
+        "options": [
+          "Animal Handling",
+          "Athletics",
+          "Intimidation",
+          "Nature",
+          "Perception",
+          "Survival"
+        ]
+      }
+    }
+  },
+  "Bard": {},
+  "Cleric": {},
+  "Druid": {},
+  "Fighter": {},
+  "Monk": {},
+  "Paladin": {},
+  "Ranger": {},
+  "Rogue": {},
+  "Sorcerer": {},
+  "Warlock": {},
+  "Wizard": {}
+}
