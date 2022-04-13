@@ -1,0 +1,167 @@
+{
+    "Saving Throws": {
+        "Charisma": {
+            "Proficiency": true,
+            "Bonus": "6"
+        },
+        "Dexterity": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Wisdom": {
+            "Proficiency": true,
+            "Bonus": "5"
+        },
+        "Intelligence": {
+            "Proficiency": true,
+            "Bonus": "4"
+        },
+        "Strength": {
+            "Proficiency": true,
+            "Bonus": "1"
+        },
+        "Constitution": {
+            "Proficiency": true,
+            "Bonus": "3"
+        }
+    },
+    "Inspiration": "9",
+    "Other Proficiencies": "Elvish\nSpanish (High School Level)\nSkeeball",
+    "Equipment": {
+        "PP": "0",
+        "GP": "150",
+        "EP": "0",
+        "CP": "5",
+        "SP": "50",
+        "Equipment List": "A single skeeball\n47 swords\nTossin' Dwarf\nLoin Cloth\nLoin Cloth detergent"
+    },
+    "Skills": {
+        "Nature": {
+            "Proficiency": true,
+            "Bonus": "1"
+        },
+        "Intimidation": {
+            "Proficiency": true,
+            "Bonus": "8"
+        },
+        "Sleight of Hand": {
+            "Proficiency": true,
+            "Bonus": "6"
+        },
+        "Animal Handling": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Deception": {
+            "Proficiency": true,
+            "Bonus": "5"
+        },
+        "Religion": {
+            "Proficiency": true,
+            "Bonus": "5"
+        },
+        "History": {
+            "Proficiency": true,
+            "Bonus": "6"
+        },
+        "Survival": {
+            "Proficiency": true,
+            "Bonus": "8"
+        },
+        "Persuasion": {
+            "Proficiency": true,
+            "Bonus": "4"
+        },
+        "Medicine": {
+            "Proficiency": true,
+            "Bonus": "0"
+        },
+        "Athletics": {
+            "Proficiency": true,
+            "Bonus": "4"
+        },
+        "Stealth": {
+            "Proficiency": true,
+            "Bonus": "7"
+        },
+        "Investigation": {
+            "Proficiency": true,
+            "Bonus": "9"
+        },
+        "Insight": {
+            "Proficiency": true,
+            "Bonus": "7"
+        },
+        "Perception": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Performance": {
+            "Proficiency": true,
+            "Bonus": "3"
+        },
+        "Acrobatics": {
+            "Proficiency": true,
+            "Bonus": "1"
+        },
+        "Arcana": {
+            "Proficiency": true,
+            "Bonus": "3"
+        }
+    },
+    "Proficiency Bonus": "+4",
+    "Personality": {
+        "Personality Traits": "Really into MTG",
+        "Bonds": "He and his Tossin' Dwarf have an unusually strong and healthy relationship.\nLot's of after care, checking in, etc.\n",
+        "Flaws": "Can't gain mass around his ankles",
+        "Ideals": "Wants to be the very best, like no one ever was"
+    },
+    "Features": {"Features Text": "Rage\nTossin' Dwarves\nSummon totem I guess\nCatostrophic whistling"},
+    "Core Combat": {
+        "Current Hit Points": "50\n44\n9",
+        "Temporary Hit Points": "+19",
+        "Attacks & Spellcasting": {
+            "Attack3": {
+                "Atk Bonus": "+99",
+                "Damage Type": "The warth of a dwarf",
+                "Name": "Toss a Dwarf"
+            },
+            "Attack2": {
+                "Atk Bonus": "+2",
+                "Damage Type": "1d8+6 Dancing",
+                "Name": "Da Club"
+            },
+            "Other Attacks": "Rage Bonus: +5 to hit, +6 damage\n",
+            "Attack1": {
+                "Atk Bonus": "+4",
+                "Damage Type": "1d6+4 Slashing",
+                "Name": "Hand Axe"
+            }
+        },
+        "Speed": "10",
+        "Death Save Failures": 1,
+        "Armor Class": "10",
+        "Hit Dice": "3d12",
+        "Initiative": "10",
+        "Max Hit Points": "50",
+        "Total Hit Dice": "5d15",
+        "Death Save Successes": 2
+    },
+    "Identity": {
+        "Alignment": "Chaotic Neutral",
+        "Character Name": "Dave the Barbarian",
+        "Background": "Wanderer",
+        "Experience Points": "9000",
+        "Race": "Human",
+        "Class Level": "Barbarian 5, Path of the Totem Warrior",
+        "Player Name": "Patrick"
+    },
+    "Core Stats": {
+        "Charisma": "18",
+        "Dexterity": "18",
+        "Wisdom": "18",
+        "Intelligence": "18",
+        "Strength": "18",
+        "Constitution": "18"
+    }
+}

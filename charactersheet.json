@@ -1,0 +1,168 @@
+{
+    "Saving Throws": {
+        "Charisma": {
+            "Proficiency": true,
+            "Bonus": "6"
+        },
+        "Dexterity": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Wisdom": {
+            "Proficiency": true,
+            "Bonus": "5"
+        },
+        "Intelligence": {
+            "Proficiency": true,
+            "Bonus": "4"
+        },
+        "Strength": {
+            "Proficiency": true,
+            "Bonus": "1"
+        },
+        "Constitution": {
+            "Proficiency": true,
+            "Bonus": "3"
+        }
+    },
+    "Inspiration": "0",
+    "Other Proficiencies": "Spanish",
+    "Passive Perception": "13",
+    "Equipment": {
+        "PP": "1",
+        "GP": "2",
+        "EP": "3",
+        "CP": "4",
+        "SP": "5",
+        "Equipment List": "Some Swords"
+    },
+    "Skills": {
+        "Nature": {
+            "Proficiency": false,
+            "Bonus": "4"
+        },
+        "Intimidation": {
+            "Proficiency": false,
+            "Bonus": "3"
+        },
+        "Sleight of Hand": {
+            "Proficiency": false,
+            "Bonus": "23"
+        },
+        "Animal Handling": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Deception": {
+            "Proficiency": true,
+            "Bonus": "51"
+        },
+        "Religion": {
+            "Proficiency": false,
+            "Bonus": "1"
+        },
+        "History": {
+            "Proficiency": false,
+            "Bonus": "1"
+        },
+        "Survival": {
+            "Proficiency": true,
+            "Bonus": "2"
+        },
+        "Persuasion": {
+            "Proficiency": true,
+            "Bonus": "21"
+        },
+        "Medicine": {
+            "Proficiency": false,
+            "Bonus": "4"
+        },
+        "Athletics": {
+            "Proficiency": true,
+            "Bonus": "4"
+        },
+        "Stealth": {
+            "Proficiency": true,
+            "Bonus": "1"
+        },
+        "Investigation": {
+            "Proficiency": false,
+            "Bonus": "3"
+        },
+        "Insight": {
+            "Proficiency": false,
+            "Bonus": "2"
+        },
+        "Perception": {
+            "Proficiency": false,
+            "Bonus": "5"
+        },
+        "Performance": {
+            "Proficiency": false,
+            "Bonus": "3"
+        },
+        "Acrobatics": {
+            "Proficiency": true,
+            "Bonus": "12"
+        },
+        "Arcana": {
+            "Proficiency": true,
+            "Bonus": "3"
+        }
+    },
+    "Proficiency Bonus": "0",
+    "Personality": {
+        "Personality Traits": "asdf",
+        "Bonds": "asdfasdf",
+        "Flaws": "asdfasdfasdf",
+        "Ideals": "asdfasdfasdfasdf"
+    },
+    "Features": {"Features Text": "Some barbarian shit idk"},
+    "Core Combat": {
+        "Current Hit Points": "75",
+        "Temporary Hit Points": "10",
+        "Attacks & Spellcasting": {
+            "Attack3": {
+                "Atk Bonus": "+3",
+                "Damage Type": "Bludgeoning",
+                "Name": "Pile Driver"
+            },
+            "Attack2": {
+                "Atk Bonus": "+4",
+                "Damage Type": "Ouch",
+                "Name": "Punch"
+            },
+            "Other Attacks": "kAJSHDFHHSADF\nASDF\nA\nSDF\nASD\nF\nASD\nFA\nSD\nF\nASD\nFA\nSD\nF\nAS\nDF\nAS\nDF\nAS\nDF\nA\nSDF\nA\nSD\nF\nFAS",
+            "Attack1": {
+                "Atk Bonus": "+8",
+                "Damage Type": "oooof",
+                "Name": "Kick"
+            }
+        },
+        "Speed": "15",
+        "Death Save Failures": 2,
+        "Armor Class": "15",
+        "Hit Dice": "6d10",
+        "Initiative": "15",
+        "Max Hit Points": "100",
+        "Total Hit Dice": "10d10",
+        "Death Save Successes": 2
+    },
+    "Identity": {
+        "Alignment": "Chaotic Good",
+        "Character Name": "Dave the Barbarian",
+        "Background": "background",
+        "Experience Points": "1090",
+        "Race": "Dwarf",
+        "Class Level": "1st level",
+        "Player Name": "Patrick"
+    },
+    "Core Stats": {
+        "Charisma": "8",
+        "Dexterity": "11",
+        "Wisdom": "14",
+        "Intelligence": "6",
+        "Strength": "10",
+        "Constitution": "12"
+    }
+}
