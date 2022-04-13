@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.ClassBuilderController">
+   <children>
+      <ChoiceBox fx:id="classChoiceBox" layoutX="25.0" layoutY="28.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="levelChoiceBox" layoutX="25.0" layoutY="80.0" prefWidth="150.0" />
+      <RadioButton fx:id="coreClassRadioButton" layoutX="204.0" layoutY="32.0" mnemonicParsing="false" text="New Class Feature" />
+      <RadioButton fx:id="subclassRadioButton" layoutX="204.0" layoutY="72.0" mnemonicParsing="false" text="New Subclass Feature" />
+      <TextField layoutX="367.0" layoutY="68.0" />
+      <RadioButton layoutX="204.0" layoutY="106.0" mnemonicParsing="false" text="Existing Class Feature" />
+      <RadioButton layoutX="204.0" layoutY="139.0" mnemonicParsing="false" text="Existing Subclass Feature" />
+      <ChoiceBox fx:id="existingSubclassChoiceBox" layoutX="367.0" layoutY="135.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="existingClassFeatureChoiceBox" layoutX="367.0" layoutY="102.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="existingSubclassFeatureChoiceBox" layoutX="367.0" layoutY="174.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
