@@ -1,14 +1,18 @@
 package org.nerdcore.dungeonsanddragons5echaractersheet.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class ChoiceFeature extends Feature {
 
-    List<Feature> choices = new ArrayList<>();
+    List<Feature> choices;
 
+    public ChoiceFeature(String name, String text, Feature... choices){
+        super(name, text);
+        this.choices = new ArrayList<>();
+        this.choices.addAll(Arrays.asList(choices));
+    }
+
+    //TODO: Test code, update correct implementation
     private Feature promptChoice() {
         Scanner in = new Scanner(System.in);
         System.out.println("Choose [a], [b], or [c]");
@@ -19,6 +23,12 @@ public class ChoiceFeature extends Feature {
             case "c" -> new Feature("C", "Feature C");
             default -> new Feature("Bad", "Bad Feature");
         };
+    }
+
+    @Override
+    public boolean addFeatureToCharacterSheetModel(CharacterSheetModel c) {
+        return promptChoice().addFeatureToCharacterSheetModel(c);
 
     }
+
 }

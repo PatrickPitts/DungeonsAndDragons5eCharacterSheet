@@ -7,7 +7,7 @@ public class Ability {
     String name;
     String[] identifiers;
     String source;
-    List<List<ModelResource>> resourceCost = new ArrayList<>();
+    List<List<Resource>> resourceCost = new ArrayList<>();
 
     public String[] getIdentifiers(){
         return identifiers;

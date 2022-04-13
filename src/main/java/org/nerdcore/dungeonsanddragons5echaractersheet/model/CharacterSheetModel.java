@@ -6,7 +6,28 @@ import java.util.List;
 import java.util.Map;
 
 public class CharacterSheetModel {
-    Map<String, Statistic> statisticMap = new HashMap<>();
-    List<FeatureAggregate> aggregateList = new ArrayList<>();
-    List<ModelResource> resourceList = new ArrayList<>();
+    private Map<String, Statistic> statisticMap;
+    private List<FeatureAggregate> aggregateList;
+    private List<Resource> resourceList;
+    private List<Ability> abilityList;
+
+    public CharacterSheetModel(){
+        statisticMap = new HashMap<>();
+        aggregateList = new ArrayList<>();
+        resourceList = new ArrayList<>();
+        abilityList = new ArrayList<>();
+    }
+
+    public void addFeatureAggregate(FeatureAggregate f){
+        aggregateList.add(f);
+    }
+
+    private boolean processFeature(Feature f){
+        return false;
+    }
+
+    public boolean useAbility(Ability a){
+        return false;
+    }
+
 }

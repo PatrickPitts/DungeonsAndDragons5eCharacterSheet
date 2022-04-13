@@ -6,18 +6,14 @@ public class Feature {
     private String text;
 
 
-    public Feature(){
-
-    }
-
     public Feature(String name, String text){
         setName(name);
         setText(text);
     }
 
-    //TODO Correctly implement adding feature to CharacterSheetModel
+    //TODO: Test code. Correctly implement adding feature to CharacterSheetModel
     public boolean addFeatureToCharacterSheetModel(CharacterSheetModel c){
-        System.out.println("Feature Not Added");
+        System.out.println("Feature Added");
         return false;
     }
 

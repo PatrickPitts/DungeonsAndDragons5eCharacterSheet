@@ -1,8 +1,9 @@
+Feature:
 ```mermaid
 classDiagram
     %% Can be used to represent how much of a resource the CharacterSheetModel has
     %% or can be used to represent the resource cost for an ability
-    class ModelResource{
+    class Resource{
         -String name
         -double quantity
     }
@@ -51,6 +52,7 @@ classDiagram
         -Map~String, Statistic~ statistics
         -List~FeatureAggregate~ aggregateList 
         -List~ModelResource~ resources
+        -List~Ability~ abilityList
         +addFeatureAggregate(FeatureAggregate) String
         -processFeature(Feature) boolean
         +useAbility(Ability) boolean
