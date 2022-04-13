@@ -3,11 +3,12 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
 <AnchorPane fx:id="spellSheet" prefHeight="562.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.SpellsSheetController">
@@ -76,14 +77,84 @@
                <children>
                   <HBox layoutX="4.0" style="-fx-border-color: black; -fx-border-width: 2px;">
                      <children>
-                        <Label text="Spell level, save, dc shit here" />
+                        <Label text="Spell level, save, dc here" />
                      </children>
                   </HBox>
-                  <ScrollPane layoutX="-4.0" layoutY="65.0" prefHeight="496.0" prefWidth="601.0">
-                    <content>
-                        <WebView fx:id="spellDescriptionWebView" prefHeight="494.0" prefWidth="592.0" />
-                    </content>
-                  </ScrollPane>
+                  <WebView fx:id="spellDescriptionWebView" layoutX="3.0" layoutY="209.0" prefHeight="348.0" prefWidth="588.0" />
+                  <VBox layoutX="4.0" layoutY="61.0">
+                     <children>
+                        <Label fx:id="spellNameLabel" text="Name">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="spellLevelSchoolLabel" prefHeight="18.0" prefWidth="228.0" text="School/Level (Ritual?)">
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <Label text="Casting Time: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellCastingTimeLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Range: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellRangeLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Components: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellComponentsLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Duration: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellDurationLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Classes: ">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellClassesLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="140.0">
+                           <children>
+                              <Label text="Source: ">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="spellSourceBookLabel" layoutX="10.0" layoutY="10.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
         </items>
