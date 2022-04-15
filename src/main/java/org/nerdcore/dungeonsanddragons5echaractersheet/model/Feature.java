@@ -11,6 +11,11 @@ public class Feature {
         setText(text);
     }
 
+    public Feature(Feature clone){
+        setName(clone.getName());
+        setText(clone.getText());
+    }
+
     //TODO: Test code. Correctly implement adding feature to CharacterSheetModel
     public boolean addFeatureToCharacterSheetModel(CharacterSheetModel c){
         System.out.println("Feature Added");
