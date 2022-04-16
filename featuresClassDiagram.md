@@ -1,4 +1,7 @@
-Feature:
+CombatAbility: Damage String format:  [n]d[b]...+[S1+...+Sx]
+- n = number of dice of type [b]  
+- b = base of dice rolled, e.g. d6, d20  
+- Sx = arbitrary number of score modifier
 ```mermaid
 classDiagram
     %% Can be used to represent how much of a resource the CharacterSheetModel has
@@ -46,7 +49,8 @@ classDiagram
     -Statistic target
     -Statistic source
     +getModifiedStatistic() Statistic
-    
+    }
+    class TemporaryStatisticModifier{
     }
     class CharacterSheetModel{
         -Map~String, Statistic~ statistics
@@ -66,11 +70,15 @@ classDiagram
         +getIdentifiers() String[]
         +isAbilityType(String) boolean
     }
+    class CombatAbility{
+        -String damage
+    }
 
     class ChoiceFeature{
     +promptChoice() Feature
     }
 
+    CombatAbility --|> Ability
     Feature o-- FeatureAggregate
     CharacterSheetModel o-- Ability
     Feature <|-- ChoiceFeature : Prompts Choice, then supplies the specific Feature
@@ -79,7 +87,8 @@ classDiagram
     AbilityFeature --|> Feature
     AbilityFeature o-- Ability
     Statistic o-- StatisticModifier
-    Ability --o ModelResource : Cost to use
-    CharacterSheetModel --o ModelResource : Has Many
+    TemporaryStatisticModifier --|> StatisticModifier
+    Ability --o Resource : Cost to use
+    CharacterSheetModel --o Resource : Has Many
     ModifierFeature --o StatisticModifier
 ```
