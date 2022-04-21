@@ -17,10 +17,26 @@ public class IOServices {
     private static final String sheetFilePath = "/Documents/CharacterSheetManager/.characterSheets";
     private static final String sysFilePath = "/Documents/CharacterSheetManager/.sys";
 
+    public static boolean writeFeatureJSONObjectToFile(JSONObject obj, String... path){
+        verifySystemStoreDirectoryPath();
+        File featureJSONFile = new File(System.getProperty("user.home"), sysFilePath + "/allfeature.json");
+        if(path.length > 0){
+            System.out.printf("Implementation needed: include filepath %s%n", path[0]);
+            //TODO: custom file pathing
+        }
+        if(featureJSONFile.exists()){
+            try(FileWriter fw = new FileWriter(featureJSONFile, true)) {
+                fw.write(obj.toString(4));
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     public static JSONArray getAllSpellsJSONArray(){
         verifySystemStoreDirectoryPath();
-//        String datapath = sysFilePath + "/allspells.json";
-//        String datapath = "C:/Users/spugn/Documents/CharacterSheetManager/.sys/allspells.json";
         File spellJSONFile = new File(System.getProperty("user.home"), sysFilePath + "/allspells.json");
 
         if(spellJSONFile.exists()){

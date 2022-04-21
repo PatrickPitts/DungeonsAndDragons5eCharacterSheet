@@ -11,39 +11,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.HTMLEditor?>
 
-
-<AnchorPane prefHeight="647.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.FeatureBuilderController">
+<AnchorPane prefHeight="647.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nerdcore.dungeonsanddragons5echaractersheet.FeatureBuilderController">
    <children>
       <TextField fx:id="featureNameTextField" layoutX="104.0" layoutY="34.0" />
       <Label layoutX="14.0" layoutY="38.0" text="Feature Name" />
       <RadioButton fx:id="basicFeatureRadioButton" layoutX="28.0" layoutY="75.0" mnemonicParsing="false" text="Basic" />
       <RadioButton fx:id="choiceFeatureRadioButton" layoutX="89.0" layoutY="75.0" mnemonicParsing="false" text="Choice" />
       <RadioButton fx:id="aggregateFeatureRadioButton" layoutX="159.0" layoutY="75.0" mnemonicParsing="false" text="Aggregate" />
-      <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="28.0" layoutY="111.0" prefHeight="347.0" prefWidth="548.0" />
-      <ScrollPane disable="true" layoutX="601.0" layoutY="156.0" prefHeight="458.0" prefWidth="200.0">
+      <HTMLEditor fx:id="featureHTMLEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="28.0" layoutY="111.0" prefHeight="347.0" prefWidth="548.0" />
+      <ScrollPane layoutX="765.0" layoutY="160.0" prefHeight="458.0" prefWidth="200.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ListView layoutY="-14.0" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="featureCollectionListView" disable="true" layoutY="-14.0" prefHeight="458.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-      <ChoiceBox disable="true" layoutX="601.0" layoutY="43.0" prefWidth="150.0" />
-      <Button disable="true" layoutX="601.0" layoutY="84.0" mnemonicParsing="false" text="Add to Feature Collection" />
-      <Button layoutX="270.0" layoutY="34.0" mnemonicParsing="false" text="Submit Feature" />
+      <ChoiceBox fx:id="featureCollectionChooseChoiceBox" disable="true" layoutX="765.0" layoutY="47.0" prefWidth="150.0" />
+      <Button disable="true" layoutX="765.0" layoutY="88.0" mnemonicParsing="false" text="Add to Feature Collection" />
+      <Button fx:id="submitFeatureButton" layoutX="270.0" layoutY="34.0" mnemonicParsing="false" text="Submit Feature" />
       <RadioButton fx:id="abilityFeatureRadioButton" layoutX="253.0" layoutY="75.0" mnemonicParsing="false" text="Ability" />
-      <RadioButton layoutX="319.0" layoutY="76.0" mnemonicParsing="false" text="Modifier" />
+      <RadioButton fx:id="modifierFeatureRadioButton" layoutX="319.0" layoutY="76.0" mnemonicParsing="false" text="Modifier" />
       <CheckBox fx:id="prerequisiteCheckBox" layoutX="28.0" layoutY="493.0" mnemonicParsing="false" text="Prerequisites?" />
       <ScrollPane layoutX="191.0" layoutY="483.0" prefHeight="128.0" prefWidth="200.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ListView layoutY="-1.0" prefHeight="116.0" prefWidth="186.0" />
+                  <ListView fx:id="prerequisiteListView" layoutY="-1.0" prefHeight="116.0" prefWidth="186.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
       <Button fx:id="addPrerequisiteButton" disable="true" layoutX="50.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Add..." />
+      <Button fx:id="editFeatureButton" layoutX="385.0" layoutY="34.0" mnemonicParsing="false" text="Edit A Feature" />
+      <ScrollPane layoutX="589.0" layoutY="113.0" prefHeight="458.0" prefWidth="163.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="featureTagListVIew" disable="true" layoutY="-14.0" prefHeight="458.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <TextField fx:id="featureTagTextField" layoutX="589.0" layoutY="47.0" promptText="Add Tag..." />
+      <Button fx:id="featureTagAddButton" layoutX="638.0" layoutY="81.0" mnemonicParsing="false" text="Add Tag" />
    </children>
 </AnchorPane>
